@@ -1,0 +1,73 @@
+{
+  "name": "crypto-alert-system",
+  "version": "1.0.0",
+  "description": "Sistema de alertas de criptomonedas en tiempo real con indicadores RSI(18) y ADXR para BTCUSDT y ETHUSDT",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'No build needed for static site'",
+    "test": "echo 'Testing alert system...'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "trading",
+    "alerts", 
+    "RSI",
+    "ADXR",
+    "bitcoin",
+    "ethereum",
+    "binance",
+    "websocket",
+    "technical-analysis",
+    "real-time"
+  ],
+  "author": {
+    "name": "Crypto Alert System",
+    "email": "alerts@crypto-system.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usuario/crypto-alert-system.git"
+  },
+  "homepage": "https://crypto-alerts.vercel.app",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {},
+  "dependencies": {},
+  "files": [
+    "index.html",
+    "css/",
+    "js/",
+    "vercel.json",
+    "README.md"
+  ],
+  "config": {
+    "binance_websocket": "wss://stream.binance.com:9443/ws/",
+    "supported_pairs": ["BTCUSDT", "ETHUSDT"],
+    "supported_timeframes": ["5m", "15m"],
+    "indicators": {
+      "rsi_period": 18,
+      "adxr_period": 18,
+      "oversold": 30,
+      "overbought": 70,
+      "trend_level": 25
+    }
+  },
+  "vercel": {
+    "builds": [
+      {
+        "src": "index.html",
+        "use": "@vercel/static"
+      }
+    ]
+  }
+}

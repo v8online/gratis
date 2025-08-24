@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Alerts - RSI + ADXR System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-chart-line"></i> Crypto Alert System</h1>
+            <p>RSI(18) + ADXR - M5/M15 Real-time Alerts</p>
+            <div class="connection-status">
+                <span id="connectionStatus" class="status-disconnected">
+                    <i class="fas fa-circle"></i> Desconectado
+                </span>
+            </div>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="controls-grid">
+                <!-- Master Controls -->
+                <div class="control-group">
+                    <h3><i class="fas fa-volume-up"></i> Control Master</h3>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="masterAlert" checked>
+                            <span class="slider">
+                                <span class="slider-text">OFF</span>
+                                <span class="slider-text">ON</span>
+                            </span>
+                        </label>
+                        <span class="toggle-label">Alertas Sonoras</span>
+                    </div>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="control-group">
+                    <h3><i class="fas fa-volume-high"></i> Volumen</h3>
+                    <div class="volume-control">
+                        <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
+                        <span id="volumeValue">50%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trading Pairs Section -->
+        <div class="pairs-section">
+            <!-- BTCUSDT Controls -->
+            <div class="pair-container">
+                <div class="pair-header">
+                    <h2><i class="fab fa-bitcoin"></i> BTCUSDT</h2>
+                    <div class="pair-price">
+                        <span id="btc-price">$0.00</span>
+                        <span id="btc-change" class="change neutral">0.00%</span>
+                    </div>
+                </div>
+                
+                <div class="timeframe-controls">
+                    <div class="timeframe-group">
+                        <h4>M5 (5 minutos)</h4>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="btc-m5-toggle" checked>
+                            <span class="slider">
+                                <span class="slider-text">OFF</span>
+                                <span class="slider-text">ON</span>
+                            </span>
+                        </label>
+                        <div class="indicators-display">
+                            <div class="indicator">
+                                <span>RSI:</span>
+                                <span id="btc-m5-rsi" class="indicator-value">--</span>
+                            </div>
+                            <div class="indicator">
+                                <span>ADXR:</span>
+                                <span id="btc-m5-adxr" class="indicator-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeframe-group">
+                        <h4>M15 (15 minutos)</h4>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="btc-m15-toggle" checked>
+                            <span class="slider">
+                                <span class="slider-text">OFF</span>
+                                <span class="slider-text">ON</span>
+                            </span>
+                        </label>
+                        <div class="indicators-display">
+                            <div class="indicator">
+                                <span>RSI:</span>
+                                <span id="btc-m15-rsi" class="indicator-value">--</span>
+                            </div>
+                            <div class="indicator">
+                                <span>ADXR:</span>
+                                <span id="btc-m15-adxr" class="indicator-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ETHUSDT Controls -->
+            <div class="pair-container">
+                <div class="pair-header">
+                    <h2><i class="fab fa-ethereum"></i> ETHUSDT</h2>
+                    <div class="pair-price">
+                        <span id="eth-price">$0.00</span>
+                        <span id="eth-change" class="change neutral">0.00%</span>
+                    </div>
+                </div>
+                
+                <div class="timeframe-controls">
+                    <div class="timeframe-group">
+                        <h4>M5 (5 minutos)</h4>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="eth-m5-toggle" checked>
+                            <span class="slider">
+                                <span class="slider-text">OFF</span>
+                                <span class="slider-text">ON</span>
+                            </span>
+                        </label>
+                        <div class="indicators-display">
+                            <div class="indicator">
+                                <span>RSI:</span>
+                                <span id="eth-m5-rsi" class="indicator-value">--</span>
+                            </div>
+                            <div class="indicator">
+                                <span>ADXR:</span>
+                                <span id="eth-m5-adxr" class="indicator-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeframe-group">
+                        <h4>M15 (15 minutos)</h4>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="eth-m15-toggle" checked>
+                            <span class="slider">
+                                <span class="slider-text">OFF</span>
+                                <span class="slider-text">ON</span>
+                            </span>
+                        </label>
+                        <div class="indicators-display">
+                            <div class="indicator">
+                                <span>RSI:</span>
+                                <span id="eth-m15-rsi" class="indicator-value">--</span>
+                            </div>
+                            <div class="indicator">
+                                <span>ADXR:</span>
+                                <span id="eth-m15-adxr" class="indicator-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configuration Panel -->
+        <div class="config-panel">
+            <h3><i class="fas fa-cog"></i> Configuración de Indicadores</h3>
+            <div class="config-grid">
+                <div class="config-item">
+                    <label>RSI Período:</label>
+                    <input type="number" id="rsi-period" value="18" min="1" max="50">
+                </div>
+                <div class="config-item">
+                    <label>Sobrecompra:</label>
+                    <input type="number" id="rsi-overbought" value="70" min="50" max="90">
+                </div>
+                <div class="config-item">
+                    <label>Sobreventa:</label>
+                    <input type="number" id="rsi-oversold" value="30" min="10" max="50">
+                </div>
+                <div class="config-item">
+                    <label>ADXR Nivel:</label>
+                    <input type="number" id="adxr-level" value="25" min="10" max="50">
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert History -->
+        <div class="alert-history">
+            <h3><i class="fas fa-history"></i> Historial de Alertas</h3>
+            <div id="alertsList" class="alerts-list">
+                <p class="no-alerts">No hay alertas recientes...</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Binance WebSocket API | Real-time Crypto Analysis</p>
+            <div class="footer-stats">
+                <span>Uptime: <span id="uptime">00:00:00</span></span>
+                <span>Alerts: <span id="alertCount">0</span></span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Alert Modal -->
+    <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="alertTitle">Nueva Señal</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="alertDetails" class="alert-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <i class="fas fa-chart-line loading-icon"></i>
+            <h3>Iniciando Sistema de Alertas...</h3>
+            <div class="loading-steps">
+                <p id="loadingStep">Conectando a Binance WebSocket...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/indicators.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/websocket.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
