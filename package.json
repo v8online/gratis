@@ -5,14 +5,13 @@
   "main": "index.html",
   "scripts": {
     "dev": "python -m http.server 3000",
-    "build": "echo 'No build needed for static site'",
     "test": "echo 'Testing alert system...'",
     "deploy": "vercel --prod"
   },
   "keywords": [
     "cryptocurrency",
     "trading",
-    "alerts", 
+    "alerts",
     "RSI",
     "ADXR",
     "bitcoin",
@@ -61,13 +60,5 @@
       "overbought": 70,
       "trend_level": 25
     }
-  },
-  "vercel": {
-    "builds": [
-      {
-        "src": "index.html",
-        "use": "@vercel/static"
-      }
-    ]
   }
 }
